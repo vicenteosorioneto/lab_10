@@ -1,0 +1,58 @@
+{
+  "note": "Este arquivo é gerado automaticamente ao executar python main.py",
+  "model_vram_loaded_mb": 0.0,
+  "total_context_tokens": 0,
+  "max_new_tokens": 100,
+  "scenarios": [],
+  "comparison": {},
+  "example_output": {
+    "description": "Exemplo de saída esperada em GPU com 8GB VRAM (RTX 3060/4060)",
+    "model_vram_loaded_mb": 847.5,
+    "total_context_tokens": 12847,
+    "max_new_tokens": 100,
+    "scenarios": [
+      {
+        "label": "Sem KV Cache",
+        "tokens_generated": 100,
+        "elapsed_sec": 18.742,
+        "vram_start_mb": 847.5,
+        "vram_peak_mb": 2341.8,
+        "throughput_tok_per_sec": 5.3,
+        "attn_implementation": "sdpa",
+        "use_cache": false
+      },
+      {
+        "label": "Com KV Cache",
+        "tokens_generated": 100,
+        "elapsed_sec": 6.183,
+        "vram_start_mb": 847.5,
+        "vram_peak_mb": 1124.3,
+        "throughput_tok_per_sec": 16.2,
+        "attn_implementation": "sdpa",
+        "use_cache": true
+      },
+      {
+        "label": "FlashAttention-2",
+        "tokens_generated": 100,
+        "elapsed_sec": 3.921,
+        "vram_start_mb": 847.5,
+        "vram_peak_mb": 978.6,
+        "throughput_tok_per_sec": 25.5,
+        "attn_implementation": "flash_attention_2",
+        "use_cache": true
+      }
+    ],
+    "comparison": {
+      "Sem KV Cache vs Com KV Cache": {
+        "speedup_x": 3.03,
+        "vram_delta_mb": -1217.5,
+        "throughput_gain_pct": 205.7
+      },
+      "Sem KV Cache vs FlashAttention-2": {
+        "speedup_x": 4.78,
+        "vram_delta_mb": -1363.2,
+        "throughput_gain_pct": 381.1
+      }
+    }
+  }
+}
